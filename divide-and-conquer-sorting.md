@@ -25,17 +25,16 @@ ___
 
 ## Setup
 
-* Clone down the starter code, install dependencies, and cd into project:
+* Clone down the starter code, cd into the project, and install dependencies:
 ```
-    $ git clone https://git.generalassemb.ly/shaw-kitajima/GA-Post-Course-CS.git
-    $ cd GA-Post-Course-CS/
+    $ fork and clone this project
+    $ cd divide-and-conquer-sorting
     $ npm i
-    $ cd divide-and-conquer-sorting/
 ```
 
 * run the tests
 ```
-    $ npx mocha
+    $ npm test
 ```
 
 * Open the project's folder in your code editor
