@@ -52,8 +52,8 @@ ___
 Quick Sorts are a sorting algorithm that divides a list into three parts:
 
 1. The ``pivot``: (a single element)
-2. The ``left partition``: a list of data whose values are less than the pivot
-3. The ``right parition``: a list of data whose values are greater than the pivot
+2. The ``left partition``: a list of data whose values are less than or equal to the pivot (one of the partitions should grab the values equal to the pivot)
+3. The ``right partition``: a list of data whose values are greater than the pivot
 
 **❓ Of these three parts, which is guaranteed to be sorted?**
 
@@ -72,7 +72,7 @@ Each partition would then be broken into their own three parts, until every part
 ### The Pseudocode for a Quick Sort
 
 ```js
-    // base case: the array has one element
+    // base case: the array has one element or less
     // create the pivot, and take it out of the array
     // create the left partition
     // create the right parition
@@ -83,9 +83,7 @@ Each partition would then be broken into their own three parts, until every part
 
 <details>
     <summary><strong>❓ What is the time complexity of the quick sort?</strong></summary>
-
-    Believe it or not, the worst case time complexity of a quick sort is still O(N^2). Why is this so? Consider a case where the pivot is always going to be the largest or smallest value within the partition, wouldn't we have to run the recursive function for every other element in the partition? 
-    
+    <p> Believe it or not, the worst case time complexity of a quick sort is still O(N^2). Why is this so? Consider a case where the pivot is always going to be the largest or smallest value within the partition, wouldn't we have to run the recursive function for every other element in the partition? </p>
 </details>
 
 ___
@@ -108,7 +106,7 @@ We can actually break down a merge sort into two phases: the ``divide`` and the 
 ### The Pseudocode for a Merge Sort
 
 ```js
-// base case: the array has one element
+// base case: the array has one element or lesss
 // find the middle point of the array
 // put everything left of the middle into a 'left' array
 // put everything right of (and including) the middle into a 'right' array
@@ -122,9 +120,7 @@ We can actually break down a merge sort into two phases: the ``divide`` and the 
 
 <details>
     <summary><strong>❓ What is the time complexity of the merge sort?</strong></summary>
-
-    The time compexity of the divide phase cuts the array in half with each iteration, making it a O(log(N)) operation. However, merging the data back together is an O(N) operation, as it will compare every item in each sub list. The combined time complexity then is O(N log(N))
-    
+    <p>The time compexity of the divide phase cuts the array in half with each iteration, making it a O(log(N)) operation. However, merging the data back together is an O(N) operation, as it will compare every item in each sub list. The combined time complexity then is O(N log(N))</p>    
 </details>
 
 
@@ -153,25 +149,25 @@ Let's take our example of ``[1, 5, 10]`` and ``[2, 6, 9]``
 
 First, we would compare ``1``, and ``2``, and figure out that ``1`` gets to go to the results. At the end of this operation, our arrays would be as follows:
 
-```
+```js
 results = [1] arr1 = [5, 10] arr2 = [2, 6, 9]
 ```
 
 Now we get to compare ``5`` and ``2``. Our results would be:
 
-```
+```js
 results = [1, 2] arr1 = [5, 10] arr2 = [6, 9]
 ```
 
 After another round:
 
-```
+```js
 results = [1, 2, 5] arr1 = [10] arr2 = [6, 9]
 ```
 
 Let's skip a few steps until we get to here:
 
-```
+```js
 results = [1, 2, 5, 6, 9] arr1 = [10] arr2 = []
 ```
 
@@ -179,8 +175,8 @@ At this point, arr2 will is empty, but our results still doesn't have all of the
 
 Why does this work? Let's pretend ``arr2`` also included ``500``, so our iterations would yield:
 
-```
-results = [1, 2, 5, 6, 9, 10] arr1 = [] arr2 = [500]
+```js
+results = [1, 2, 5, 6, 9, 10]  arr1 = [] arr2 = [500]
 ```
 
 Even if ``arr2`` had data left it in, since ``arr1`` is empty, it doesn't matter if we put the contents of ``arr1`` before the contents of ``arr2``.
